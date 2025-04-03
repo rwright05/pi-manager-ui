@@ -1,0 +1,12 @@
+version: "3"
+services:
+  pi-manager:
+    build: .
+    container_name: pi-manager
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/log/net_report.log:/var/log/net_report.log
+      - /usr/local/bin/monthly-update.sh:/usr/local/bin/monthly-update.sh
